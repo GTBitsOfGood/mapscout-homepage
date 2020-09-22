@@ -7,9 +7,8 @@
 <style>
 	main {
 		position: relative;
-		max-width: 56em;
+		max-width: 100vw;
 		background-color: white;
-		padding: 2em;
 		margin: 0 auto;
 		box-sizing: border-box;
 	}
@@ -18,5 +17,5 @@
 <Nav {segment}/>
 
 <main>
-	<slot></slot>
+	<slot>Hey</slot>
 </main>
