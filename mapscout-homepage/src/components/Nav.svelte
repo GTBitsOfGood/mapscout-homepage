@@ -1,5 +1,6 @@
 <script>
 	export let segment;
+	export let scrolled = true
 </script>
 
 <style>
@@ -7,7 +8,12 @@
 		border-bottom: 1px solid rgba(255,62,0,0.1);
 		font-weight: 300;
 		padding: 0 1em;
+		transition: box-shadow 0.2s;
 	}
+
+    .shadow {
+        box-shadow: var(--shadow);
+    }
 
 	ul {
 		margin: 0;
@@ -48,7 +54,7 @@
 	}
 </style>
 
-<nav>
+<nav class:shadow={scrolled}> 
 	<ul>
 		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">Home</a></li>
 		<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about">About</a></li>
