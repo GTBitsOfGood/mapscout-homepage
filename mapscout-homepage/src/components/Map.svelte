@@ -1,13 +1,12 @@
 <script>
-	import mapConfig from './mapConfig.ts'; // optional
+  import mapConfig from './mapConfig.ts';
+  import { onMount } from 'svelte';  
 	let container;
 	let map;
 	let zoom = 17;
-    let center = {lat: 33.7756, lng: -84.3963};
-    
-    import { onMount } from 'svelte';
-    
-	onMount(async () => {
+  let center = {lat: 33.7756, lng: -84.3963};
+  
+	function initMap() {
 		map = new google.maps.Map(container, {
             zoom,
 			center,
@@ -42,9 +41,8 @@
                 map: map
             });
         }
-
-
-	});
+  }
+  onMount(async () => initMap())
 </script>
 
 <style>

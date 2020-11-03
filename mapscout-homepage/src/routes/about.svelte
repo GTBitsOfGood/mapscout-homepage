@@ -1,9 +1,11 @@
-<script>
-	import AboutMap from '../components/AboutMap.svelte';
-</script>
-
 <svelte:head>
 	<title>About</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+	<script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+      defer
+	></script>
+	<script>import Map from '../components/Map.svelte';</script>
 </svelte:head>
 
-<AboutMap></AboutMap>
+<Map/>
