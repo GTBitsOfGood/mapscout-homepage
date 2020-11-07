@@ -8,10 +8,8 @@
 	Prismic.getApi(apiEndpoint, {accessToken: apiToken}).then(function(api) {
 	return api.query(""); // An empty query will return all the documents
 	}).then(function(response) {
-	console.log("Documents: ", response.results);
-		response.results.map((item) => {
-			console.log(item)
-		})
+		people = response.results[0].data.about_entry
+		console.log(response.results[0].data.about_entry[0].person_name[0].text)
 	}, function(err) {
 	console.log("Something went wrong: ", err);
 	});
