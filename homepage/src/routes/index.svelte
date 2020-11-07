@@ -11,11 +11,20 @@
 		justify-content: center;
 	}
 
+	.bg-image {
+		position: absolute;
+  		right: 0px;
+		top: 0px;
+		height: 100vh;
+		z-index: -1;
+	}
+
 	.wrapper {
 		width: 65%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		z-index: 0;
 	}
 
 	div {
@@ -44,7 +53,7 @@
 	}
 
 	.placeholder {
-		height: 50vh;
+		height: 45vh;
 		width: 30vw;
 		background: #C4C4C4;
 	}
@@ -124,6 +133,7 @@
 		</div>
 		<div class="buffer">&nbsp</div>
 		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
+		<img class="bg-image" src="/homepage-hero-1.png" alt="bg-map"/>
 	</div>
 </section>
 <section class="alternate">
