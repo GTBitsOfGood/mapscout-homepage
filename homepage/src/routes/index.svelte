@@ -12,11 +12,9 @@
 	}
 
 	.bg-image {
-		position: absolute;
-  		right: 0px;
-		top: 0px;
-		height: 100vh;
-		z-index: -1;
+		background-image: url("/homepage-hero-1.png");
+		background-repeat: no-repeat;
+		background-position: right;
 	}
 
 	.wrapper {
@@ -81,8 +79,16 @@
 	}
 
 	@media only screen and (max-width: 768px) {
+		h1 {
+			font-size: 10vw;
+		}
+
+		p {
+			font-size: 1.1em;
+		}
+
 		.wrapper {
-			width: 100%;
+			width: 90%;
 			flex-direction: column-reverse;
 			align-items: space-between;
 		}
@@ -104,7 +110,7 @@
 
 		.buffer {
 			display: block;
-			padding: 0.5vh;
+			padding: 3vh;
 		}
 
 		.main-disc {
@@ -119,6 +125,10 @@
 			align-items: center;
 			justify-content: center;
 		}
+
+		.bg-image {
+			background: none;
+		}
 	}
 </style>
 
@@ -127,7 +137,7 @@
 </svelte:head>
 
 <!-- <h1>Main</h1> -->
-<section>
+<section class="bg-image">
 	<div class="wrapper">
 		<div>
 			<h1>Create <span class="alternate-text">beautiful</span> resource maps.</h1>
@@ -139,7 +149,6 @@
 		</div>
 		<div class="buffer">&nbsp</div>
 		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
-		<img class="bg-image" src="/homepage-hero-1.png" alt="bg-map"/>
 	</div>
 </section>
 <section class="alternate">
@@ -208,6 +217,7 @@
 				description Organization description Organization description Organization description Organization description"
 			/>
 		</div>
+		<div class="buffer">&nbsp</div>
 	</div>		
 </section>
 <section class="alternate">
