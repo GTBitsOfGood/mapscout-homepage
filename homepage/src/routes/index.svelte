@@ -56,6 +56,7 @@
 		height: 45vh;
 		width: 30vw;
 		background: #C4C4C4;
+		filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));
 	}
 
 	.main-disc {
@@ -82,7 +83,7 @@
 	@media only screen and (max-width: 768px) {
 		.wrapper {
 			width: 100%;
-			flex-direction: column;
+			flex-direction: column-reverse;
 			align-items: space-between;
 		}
 
@@ -94,6 +95,11 @@
 			height: 30vh;
 			width: 70vw;
 			background: #C4C4C4;
+		}
+
+		.alternate {
+			background-color: #fff;
+			color: #000;
 		}
 
 		.buffer {
@@ -144,6 +150,7 @@
 				Admins can smoothly manipulate anywhere from ten to ten thousand custom, presented data points.
 			</p>
 		</div>
+		<div class="buffer">&nbsp</div>
 		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
 	</div>
 </section>
@@ -157,6 +164,7 @@
 				<span class="alternate-text">categories</span>.
 			</p>
 		</div>
+		<div class="buffer">&nbsp</div>
 		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
 	</div>
 </section>
@@ -168,6 +176,7 @@
 				Mapscout is both web and mobile friendly and can be effortlessly added to existing sites.
 			</p>
 		</div>
+		<div class="buffer">&nbsp</div>
 		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
 	</div>
 </section>

@@ -33,6 +33,7 @@
     @media only screen and (max-width: 768px) {
         div {
             width: 75vw;
+            text-align: center;
         }
 
         img {
