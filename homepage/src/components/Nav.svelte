@@ -1,87 +1,200 @@
 <script>
-	export let segment;
-</script>
+	import { onMount } from "svelte";
+  
+	// Show mobile icon and display menu
+	let showMobileMenu = false;
+  
+	// List of navigation items
+	const navItems = [
+	  { label: "About", href: "#" },
+	  { label: "Contact Us", href: "#" },
+	  { label: "Sign Up", href: "#" },
+	  { label: "Log In", href: "#" }
+	];
+  
+	// Mobile menu click event handler
+	const handleMobileIconClick = () => (showMobileMenu = !showMobileMenu);
+  
+	// Media match query handler
+	const mediaQueryHandler = e => {
+	  // Reset mobile state
+	  if (!e.matches) {
+		showMobileMenu = false;
+	  }
+	};
+  
+	// Attach media query listener on mount hook
+	onMount(() => {
+	  const mediaListener = window.matchMedia("(max-width: 767px)");
+  
+	  mediaListener.addListener(mediaQueryHandler);
+	});
+  </script>
 
 <style>
 	nav {
-		font-weight: 300;
-		padding: 0 2em;
+		height: 45px;
+		position: fixed;
+		width: 100%;
+		background-color: #fff;
+		z-index: 2;
+		height: 10vh;
+	}
+
+	.inner {
+		max-width: 98vw;
+		margin: auto;
+		box-sizing: border-box;
 		display: flex;
-		justify-content: space-between;
+		flex-direction: row-reverse;
 		align-items: center;
-		z-index: 0;
+		justify-content: space-between;
+		height: 100%;
+		padding: 0 30px;
 	}
 
-	img {
-		width: 10vw;
-		padding: 0.5em
-	}
-	ul {
-		margin: 0;
-		padding: 0;
-	}
-
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
-
-	li {
-		display: block;
-		float: left;
-	}
-
-	[aria-current] {
+	.mobile-icon {
+		width: 25px;
+		height: 14px;
 		position: relative;
-		display: inline-block;
+		cursor: pointer;
 	}
 
-	[aria-current]::after {
+	.mobile-icon:after,
+	.mobile-icon:before,
+	.middle-line {
+		content: "";
 		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
+		width: 100%;
 		height: 2px;
-		display: block;
-		bottom: -1px;
+		background-color: #000;
+		transition: all 0.4s;
+		transform-origin: center;
 	}
 
-	a {
-		text-decoration: none;
-		padding: 1em 1em;
+	.mobile-icon:before,
+	.middle-line {
+		top: 0;
+	}
+
+	.mobile-icon:after,
+	.middle-line {
+		bottom: 0;
+	}
+
+	.mobile-icon:before {
+		width: 66%;
+	}
+
+	.mobile-icon:after {
+		width: 33%;
+	}
+
+	.middle-line {
+		margin: auto;
+	}
+
+	.mobile-icon:hover:before,
+	.mobile-icon:hover:after,
+	.mobile-icon.active:before,
+	.mobile-icon.active:after,
+	.mobile-icon.active .middle-line {
+		width: 100%;
+	}
+
+	.mobile-icon.active:before,
+	.mobile-icon.active:after {
+		top: 50%;
+		transform: rotate(-45deg);
+	}
+
+	.mobile-icon.active .middle-line {
+		transform: rotate(45deg);
+	}
+
+	.navbar-list {
+		display: none;
+		width: 40%;
+		justify-content: space-around;
+		margin: 0;
+	}
+
+	.navbar-list.mobile {
+		position: fixed;
 		display: block;
+		height: 90vh;
+		bottom: 0;
+		left: 0;
+		z-index: 300;
+	}
+
+	.navbar-list li {
+		list-style-type: none;
+		position: relative;
+	}
+
+	.navbar-list li:before {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+	}
+
+	.navbar-list a {
 		color: #000;
 		font-weight: 700;
+		font-size: 16px;
+		text-decoration: none;
+		display: flex;
+		align-items: right;
+		padding: 0 10px;
 	}
 
-	button {
+	.floatingNav {
+		width: calc(100vh - 100px); 
+		border-radius: 2px;
+		box-shadow: 0px 1px 10px #999;
+	}
+
+	.logo {
 		display: none;
+		height: 30px;
 	}
 
-	@media only screen and (max-width: 768px) {
-		nav {
-			padding: 0.5em 1em;
-		}
-		img {
-			display: none;
-		}
-		ul {
-			display: none;
-		}
-		button {
+	@media only screen and (min-width: 767px) {
+		.logo {
 			display: block;
+		}
+		
+		.mobile-icon {
+			display: none;
+		}
+
+		.navbar-list {
+			display: flex;
+			padding: 0;
+		}
+
+		.navbar-list a {
+			display: inline-flex;
 		}
 	}
 </style>
 
 <nav>
-	<img src="/horizontal_lockup.png" alt="logo"/>
-	<button class="btn btn-primary">Get Started</button>
-	<ul>
-		<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href=".">About</a></li>
-		<li><a aria-current="{segment === 'contact' ? 'page' : undefined}" href="about">Contact Us</a></li>
-		<li><a aria-current="{segment === 'sign_up' ? 'page' : undefined}" href="sign_up">Sign Up</a></li>
-		<li><a aria-current="{segment === 'log_in' ? 'page' : undefined}" href="log_in">Log In</a></li>
-	</ul>
+	<div class="inner">
+		<div on:click={handleMobileIconClick} class={`mobile-icon${showMobileMenu ? ' active' : ''}`}>
+		<div class="middle-line"></div>
+		</div>
+		<ul class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
+		{#each navItems as item}
+			<li>
+				<a href={item.href}>{item.label}</a>
+			</li>
+		{/each}
+		</ul>
+		<img class="logo" src={'/horizontal_lockup.png'} alt="logo"/>
+	</div>
 </nav>

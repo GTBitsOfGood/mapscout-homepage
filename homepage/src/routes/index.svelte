@@ -3,6 +3,10 @@
 </script>
 
 <style>
+	.padding {
+		height: 16px;
+	}
+
 	section {
 		min-height: 100vh;
 		width: 100%;
@@ -22,7 +26,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		z-index: 0;
 	}
 
 	div {
@@ -133,10 +136,10 @@
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>MapScout</title>
 </svelte:head>
 
-<!-- <h1>Main</h1> -->
+<div class="padding">&nbsp</div>
 <section class="bg-image">
 	<div class="wrapper">
 		<div>

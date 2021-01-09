@@ -2,21 +2,21 @@
 	import Nav from '../components/Nav.svelte';
 
 	export let segment;
+
+	let scrolled = false
+
+	const onScroll = ({ target: { documentElement, body } }) => {
+		if (body.scrollTop > 0 || documentElement.scrollTop > 0) {
+		scrolled = true
+		} else {
+		scrolled = false
+		}
+	}
 </script>
 
-<style>
-	/* main {
-		position: relative;
-		max-width: 56em;
-		background-color: white;
-		padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
-	} */
-</style>
-
-<Nav {segment}/>
+<Nav {segment} {scrolled}/>
 
 <main>
 	<slot></slot>
 </main>
+<svelte:window on:scroll={onScroll} />
