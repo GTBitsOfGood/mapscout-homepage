@@ -1,12 +1,14 @@
 <script>
 	import { onMount } from "svelte";
   
+	export let scrolled;
+
 	// Show mobile icon and display menu
 	let showMobileMenu = false;
   
 	// List of navigation items
 	const navItems = [
-	  { label: "About", href: "#" },
+	  { label: "About", href: "about" },
 	  { label: "Contact Us", href: "#" },
 	  { label: "Sign Up", href: "#" },
 	  { label: "Log In", href: "#" }
@@ -50,7 +52,7 @@
 		align-items: center;
 		justify-content: space-between;
 		height: 100%;
-		padding: 0 30px;
+		padding: 0 20px;
 	}
 
 	.mobile-icon {
@@ -114,18 +116,20 @@
 
 	.navbar-list {
 		display: none;
-		width: 40%;
 		justify-content: space-around;
 		margin: 0;
 	}
 
 	.navbar-list.mobile {
 		position: fixed;
-		display: block;
+		display: flex;
+		flex-direction: column;
 		height: 90vh;
+		width: 100%;
 		bottom: 0;
 		left: 0;
 		z-index: 300;
+		background-color: rgba(255, 255, 255, 0.8);
 	}
 
 	.navbar-list li {
@@ -152,22 +156,22 @@
 		padding: 0 10px;
 	}
 
-	.floatingNav {
-		width: calc(100vh - 100px); 
-		border-radius: 2px;
-		box-shadow: 0px 1px 10px #999;
-	}
-
 	.logo {
 		display: none;
 		height: 30px;
+	}
+
+	.shadow {
+		-webkit-box-shadow: 0px 11px 16px -8px rgba(0,0,0,0.49);
+		-moz-box-shadow: 0px 11px 16px -8px rgba(0,0,0,0.49);
+		box-shadow: 0px 11px 16px -8px rgba(0,0,0,0.49);
 	}
 
 	@media only screen and (min-width: 767px) {
 		.logo {
 			display: block;
 		}
-		
+
 		.mobile-icon {
 			display: none;
 		}
@@ -180,11 +184,15 @@
 		.navbar-list a {
 			display: inline-flex;
 		}
+
+		button {
+			display: none;
+		}
 	}
 </style>
 
 <nav>
-	<div class="inner">
+	<div class={`inner${scrolled ? ' shadow' : ''}`}>
 		<div on:click={handleMobileIconClick} class={`mobile-icon${showMobileMenu ? ' active' : ''}`}>
 		<div class="middle-line"></div>
 		</div>
@@ -195,6 +203,7 @@
 			</li>
 		{/each}
 		</ul>
-		<img class="logo" src={'/horizontal_lockup.png'} alt="logo"/>
+		<a href="/"><img class="logo" src={'/horizontal_lockup.png'} alt="logo"/></a>
+		<button class="btn small btn-primary btn-sm">Get Started</button>
 	</div>
 </nav>

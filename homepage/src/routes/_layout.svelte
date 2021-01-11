@@ -1,8 +1,5 @@
 <script>
 	import Nav from '../components/Nav.svelte';
-
-	export let segment;
-
 	let scrolled = false
 
 	const onScroll = ({ target: { documentElement, body } }) => {
@@ -14,7 +11,7 @@
 	}
 </script>
 
-<Nav {segment} {scrolled}/>
+<Nav {scrolled}/>
 
 <main>
 	<slot></slot>

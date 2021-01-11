@@ -11,11 +11,10 @@
 		Prismic.getApi(apiEndpoint, {accessToken: apiToken}).then(function(api) {
 		return api.query(""); // An empty query will return all the documents
 		}).then(function(response) {
+			console.log(people.results)
 			people = response.results[0].data.about_entry
 			// [i].person_image.url
 			// [i].person_image -> .url .alt .dimensions.width .dimensions.height
-
-			console.log(response.results[0].data.about_entry[0])
 		}, function(err) {
 		console.log("Something went wrong: ", err);
 		});
@@ -39,4 +38,5 @@
 <h1>About this site</h1>
 
 <p>This is the 'about' page. There's not much here.</p>
+<p>{people[0].name}</p>
 <!-- <img src ={people[0].person_image.url} alt="jason_picture" /> -->
