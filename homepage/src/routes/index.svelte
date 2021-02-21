@@ -1,5 +1,25 @@
 <script>
+	import { onMount } from 'svelte';
+	import Prismic  from 'prismic-javascript';
 	import Card from '../components/Card.svelte';
+
+	var apiEndpoint = "https://mapscout.cdn.prismic.io/api/v2";
+	var apiToken = "MC5YMkVkUVJJQUFDY0FjU19f.Le-_vS3vv71q77-9BO-_ve-_ve-_ve-_vT3vv73vv70G77-9Ru-_ve-_vQTvv73vv71eX--_vXYKPe-_ve-_vRpN";
+	
+	let data = null;
+	let alternate = "alternate";
+
+	onMount(async() => {
+		Prismic.getApi(apiEndpoint, {accessToken: apiToken}).then(function(api) {
+			return api.query(""); // An empty query will return all the documents
+		}).then(function(response) {
+			console.log(response.results)
+			data = response.results[0].data.body
+			console.log(data)
+		}, function(err) {
+			console.log("Something went wrong: ", err);
+		});
+	})
 </script>
 
 <style>
@@ -140,20 +160,23 @@
 </svelte:head>
 
 <div class="padding">&nbsp</div>
-<section class="bg-image">
-	<div class="wrapper">
-		<div>
-			<h1>Create <span class="alternate-text">beautiful</span> resource maps.</h1>
-			<p>
-				Mapscout makes it simple to build and customize interactive 
-				resource maps and is completely free for non-profits.
-			</p>
-			<button class="btn btn-primary">Get Started</button>
-		</div>
-		<div class="buffer">&nbsp</div>
-		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
-	</div>
-</section>
+{#if data}
+	{#each data as item}
+		<section class={alternate}>
+			<div class="wrapper">
+				<div>
+					<h1>{item.primary.title[0].text}</h1>
+					<p>{item.primary.description[0].text}</p>
+					<button class="btn btn-primary">Get Started</button>
+				</div>
+				<div class="buffer">&nbsp</div>
+				<img class="placeholder" src="/favicon.png" alt="place_holder"/>
+			</div>
+		</section>
+		{#if alternate == "alternate"} {alternate = ""} 
+		{:else} {alternate = ""} {/if}
+	{/each}
+{/if}
 <section class="alternate">
 	<div class="wrapper">
 		<div>

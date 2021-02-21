@@ -9,10 +9,10 @@
 
 	onMount(async() => {
 		Prismic.getApi(apiEndpoint, {accessToken: apiToken}).then(function(api) {
-		return api.query(""); // An empty query will return all the documents
+			return api.query(""); // An empty query will return all the documents
 		}).then(function(response) {
-			console.log(people.results)
-			people = response.results[0].data.about_entry
+			console.log(response.results)
+			// people = response.results[0].data.about_entry
 			// [i].person_image.url
 			// [i].person_image -> .url .alt .dimensions.width .dimensions.height
 		}, function(err) {
@@ -21,20 +21,14 @@
 	})
 </script>
 <style>
-	.padding {
-		height: 15vh;
-	}
-
 	h1 {
 		background-color: aqua;
-		height: 100vh;
 	}
 </style>
 <svelte:head>
 	<title>About</title>
 </svelte:head>
 
-<div class="padding">&nbsp</div>
 <h1>About this site</h1>
 
 <p>This is the 'about' page. There's not much here.</p>

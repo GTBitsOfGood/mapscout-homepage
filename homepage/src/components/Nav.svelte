@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from "svelte";
-  
 	export let scrolled;
 
 	// Show mobile icon and display menu
@@ -27,24 +26,21 @@
   
 	// Attach media query listener on mount hook
 	onMount(() => {
-	  const mediaListener = window.matchMedia("(max-width: 767px)");
-  
-	  mediaListener.addListener(mediaQueryHandler);
+		const mediaListener = window.matchMedia("(max-width: 767px)");
+		mediaListener.addListener(mediaQueryHandler);
 	});
   </script>
 
 <style>
 	nav {
-		height: 45px;
+		height: 10vh;
 		position: fixed;
-		width: 100%;
+		width: 100vw;
 		background-color: #fff;
 		z-index: 2;
-		height: 10vh;
 	}
 
 	.inner {
-		max-width: 98vw;
 		margin: auto;
 		box-sizing: border-box;
 		display: flex;
@@ -199,7 +195,7 @@
 		<ul class={`navbar-list${showMobileMenu ? ' mobile' : ''}`}>
 		{#each navItems as item}
 			<li>
-				<a href={item.href}>{item.label}</a>
+				<a href={item.href} on:click={handleMobileIconClick}>{item.label}</a>
 			</li>
 		{/each}
 		</ul>
