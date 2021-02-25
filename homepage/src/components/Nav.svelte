@@ -8,7 +8,7 @@
 	// List of navigation items
 	const navItems = [
 	  { label: "About", href: "about" },
-	  { label: "Contact Us", href: "contact-us" },
+	  { label: "Contact Us", href: "contact" },
 	  { label: "Sign Up", href: "#" },
 	  { label: "Log In", href: "#" }
 	];
