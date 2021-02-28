@@ -25,9 +25,6 @@
     margin-top: 3rem;
     margin-bottom: 0;
   }
-  h2 {
-    font-size: 24px;
-  }
   .info-text {
     grid-area: info-text;
   }
@@ -35,18 +32,6 @@
     grid-area: image;
     justify-self: center;
     max-width: 450px;
-  }
-  .address {
-    grid-area: address;
-  }
-  .address a,
-  .address a:hover {
-    color: initial;
-    font-weight: normal;
-    transition: text-decoration 0.2s;
-  }
-  .address a:hover {
-    text-decoration: underline;
   }
   form {
     grid-area: form;
@@ -70,19 +55,7 @@
   textarea:focus {
     min-height: 10em;
   }
-  button {
-    font-size: inherit;
-    background: blue;
-    padding: 1.5rem 3rem;
-    color: white;
-    border-radius: 1rem;
-    transition-property: box-shadow, transform;
-    transition-duration: 0.2s;
-  }
-  button:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-5px);
-  }
+
   @media (max-width: 800px) {
     section {
       grid-template-columns: 1fr;
@@ -97,10 +70,10 @@
 </style>
 
 <section>
- 
+  <img class="placeholder" src="/favicon.png" alt="place_holder"/>
   <h1>Contact Us</h1>
   <p class="info-text">
-    info goes here
+  This is placeholder text.
   </p>
   <form
     method="POST"
@@ -111,24 +84,27 @@
     <label for="name">Name</label>
     <input
       type="text"
+      class="form-control"
       id="name"
       name="name"
-      placeholder="Name"
+      placeholder="Johnny Dogooder"
       required />
     <label for="email">Email</label>
     <input
       type="email"
+      class="form-control"
       id="email"
       name="email"
-      placeholder="Email"
+      placeholder="hello@nonprofit.org"
       required />
     <label for="message">Message</label>
     <textarea
       id="message"
+      class="form-control"
       name="message"
-      placeholder="message"
+      placeholder="I had a question about..."
       required />
-    <button type="submit">Message Us</button>
+    <button type="submit" class="btn btn-primary">Message Us!</button>
     <!--Ignore this element. Included so the /contact-submitted page is generated when crawling the website.-->
     <a style="display: none" href="/contact-submitted">_</a>
   </form>
