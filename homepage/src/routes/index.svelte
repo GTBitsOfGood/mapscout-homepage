@@ -1,4 +1,5 @@
 <script>
+  import Saos from "saos";
 	import { onMount } from 'svelte';
 	import Prismic  from 'prismic-javascript';
 	import Card from '../components/Card.svelte';
@@ -153,6 +154,46 @@
 			background: none;
 		}
 	}
+  @keyframes -global-fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes -global-slide-out-top {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-1000px);
+      opacity: 0;
+    }
+  }
+  @keyframes -global-slide-out-fwd-center {
+    0% {
+      transform: translateZ(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(600px);
+      opacity: 0;
+    }
+  }
+  @keyframes -global-slide-out-elliptic-top-bck {
+    0% {
+      transform: translateY(0) rotateX(0) scale(1);
+      transform-origin: 50% 1400px;
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-600px) rotateX(-30deg) scale(0);
+      transform-origin: 50% 100%;
+      opacity: 1;
+    }
+  }
 </style>
 
 <svelte:head>
@@ -162,6 +203,11 @@
 <div class="padding">&nbsp</div>
 {#if data}
 	{#each data as item}
+  <Saos
+animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+top={250}
+bottom={250}>
 		<section class={alternate}>
 			<div class="wrapper">
 				<div>
@@ -173,10 +219,16 @@
 				<img class="placeholder" src="/favicon.png" alt="place_holder"/>
 			</div>
 		</section>
+  </Saos>
 		{#if alternate == "alternate"} {alternate = ""} 
 		{:else} {alternate = ""} {/if}
 	{/each}
 {/if}
+<Saos
+animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+top={250}
+bottom={250}>
 <section class="alternate">
 	<div class="wrapper">
 		<div>
@@ -189,6 +241,12 @@
 		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
 	</div>
 </section>
+</Saos>
+<Saos
+animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+top={250}
+bottom={250}>
 <section>
 	<div class="wrapper reverse">
 		<div>
@@ -203,6 +261,12 @@
 		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
 	</div>
 </section>
+</Saos>
+<Saos
+animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+top={250}
+bottom={250}>
 <section class="alternate">
 	<div class="wrapper">
 		<div>
@@ -215,6 +279,12 @@
 		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
 	</div>
 </section>
+</Saos>
+<Saos
+animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+top={250}
+bottom={250}>
 <section>
 	<div class="main-disc">
 		<div class="normal">
@@ -246,6 +316,12 @@
 		<div class="buffer">&nbsp</div>
 	</div>		
 </section>
+</Saos>
+<Saos
+animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+top={250}
+bottom={250}>
 <section class="alternate">
 	<div class="main-disc">
 		<div class="normal">
@@ -274,3 +350,4 @@
 		</div>
 	</div>		
 </section>
+</Saos>
