@@ -2,3 +2,7 @@
 # yarn lockfile v1
 
 
+saos@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/saos/-/saos-1.1.1.tgz#08ee2112eb18f1a64d6e2a37842f178a3784ca69"
+  integrity sha512-s1JVeKCrEvpIRMIASfhBBosK5mA6HKCUJR12fgpVFw3BtIyrdSfnoS4yMm0SItdpwqaFwxe5Tl+DOTKZtvgFgw==
