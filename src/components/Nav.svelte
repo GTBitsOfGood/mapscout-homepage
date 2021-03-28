@@ -15,6 +15,7 @@
   
 	// Mobile menu click event handler
 	const handleMobileIconClick = () => (showMobileMenu = showMobileMenu); // !showMobileMenu); temporarily removed for testing, needs to be reapplied
+
   
 	// Media match query handler
 	const mediaQueryHandler = e => {
