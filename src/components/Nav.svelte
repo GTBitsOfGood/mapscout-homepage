@@ -8,13 +8,14 @@
 	// List of navigation items
 	const navItems = [
 	  { label: "About", href: "about" },
-	  { label: "Contact Us", href: "#" },
+	  { label: "Contact Us", href: "contact" },
 	  { label: "Sign Up", href: "#" },
 	  { label: "Log In", href: "#" }
 	];
   
 	// Mobile menu click event handler
-	const handleMobileIconClick = () => (showMobileMenu = !showMobileMenu);
+	const handleMobileIconClick = () => (showMobileMenu = showMobileMenu); // !showMobileMenu); temporarily removed for testing, needs to be reapplied
+
   
 	// Media match query handler
 	const mediaQueryHandler = e => {
