@@ -268,54 +268,54 @@
     animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
     top={250}
     bottom={250}>
-		<section class= "{i%2 === 1 ? 'alternate' : ''}" >
-				<div class="text-wrapper">
-					<h1>{item.primary.title[0].text}</h1>
-					<p>{item.primary.description[0].text}</p>
-          {#if i == 0}
-					<button class="btn btn-primary">Get Started</button>
-          {/if}
-				</div>
-        <div class="image">
-				<img class="placeholder" src="/favicon.png" alt="place_holder"/>
-        </div>
-		</section>
-</Saos>
+      <section class= "{i%2 === 1 ? 'alternate' : ''}" >
+          <div class="text-wrapper">
+            <h1>{item.primary.title[0].text}</h1>
+            <p>{item.primary.description[0].text}</p>
+            {#if i == 0}
+            <button class="btn btn-primary">Get Started</button>
+            {/if}
+          </div>
+          <div class="image">
+          <img class="placeholder" src="/favicon.png" alt="place_holder"/>
+          </div>
+      </section>
+    </Saos>
     {/if}
     {#if i>3}
-<Saos
-animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-top={250}
-bottom={250}>
-    <section>
-      <div class="main-disc">
-        <div class="normal">
-          <h1>{item.primary.title[0].text}</h1>
-          <p> {item.primary.description[0].text}</p>
-        </div>
-        <div class="card-container">
-          <Card 
-				image="/favicon.png"
-				title="The Philadelphia Alliance for Child Trauma Services (PACTS)" 
-				discription="PACTS is a network of child serving systems and organizations that provides evidence-based practices for traumatized youth and their families in the greater Philadelphia area."
-			/>
-			<Card 
-				image="/favicon.png"
-				title="ClinWiki" 
-				discription="A 501(c)(3) focused on making clinical trials more transparent and approachable in order to drive participation and faster progress against serious diseases."
-			/>
-			<Card 
-				image="/favicon.png"
-				title="Georgia DBHDD" 
-				discription="Organization description Organization
-				description Organization description Organization description Organization description Organization description"
-			/>
-        </div>
-        <div class="buffer">&nbsp</div>
-      </div>		
-    </section>
-  </Saos>
+      <Saos
+      animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+      animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+      top={250}
+      bottom={250}>
+        <section>
+          <div class="main-disc">
+            <div class="normal">
+              <h1>{item.primary.title[0].text}</h1>
+              <p> {item.primary.description[0].text}</p>
+            </div>
+            <div class="card-container">
+              <Card 
+              image="/favicon.png"
+              title="The Philadelphia Alliance for Child Trauma Services (PACTS)" 
+              discription="PACTS is a network of child serving systems and organizations that provides evidence-based practices for traumatized youth and their families in the greater Philadelphia area."
+              />
+              <Card 
+                image="/favicon.png"
+                title="ClinWiki" 
+                discription="A 501(c)(3) focused on making clinical trials more transparent and approachable in order to drive participation and faster progress against serious diseases."
+              />
+              <Card 
+                image="/favicon.png"
+                title="Georgia DBHDD" 
+                discription="Organization description Organization
+                description Organization description Organization description Organization description Organization description"
+              />
+            </div>
+            <div class="buffer">&nbsp</div>
+          </div>		
+        </section>
+    </Saos>
     {/if}
 	{/each}
 {/if}
@@ -369,69 +369,74 @@ bottom={250}>
 		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
 </div>
 </section> -->
-<section>
-	<div class="main-disc">
-		<div class="normal">
-			<h1>Our Maps</h1>
-			<p>
-				Currently, we are supporting nine unique clients with interactive 
-				resource maps that allow visitors to see what is offered near them 
-				and navigate often overwhelming systems.
-			</p>
-		</div>
-		<div class="card-container">
-			<Card 
-				image="/favicon.png"
-				title="The Philadelphia Alliance for Child Trauma Services (PACTS)" 
-				discription="PACTS is a network of child serving systems and organizations that provides evidence-based practices for traumatized youth and their families in the greater Philadelphia area."
-			/>
-			<Card 
-				image="/favicon.png"
-				title="ClinWiki" 
-				discription="A 501(c)(3) focused on making clinical trials more transparent and approachable in order to drive participation and faster progress against serious diseases."
-			/>
-			<Card 
-				image="/favicon.png"
-				title="Georgia DBHDD" 
-				discription="Organization description Organization
-				description Organization description Organization description Organization description Organization description"
-			/>
-		</div>
-		<div class="buffer">&nbsp</div>
-	</div>		
-</section>
+<Saos
+animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+top={250}
+bottom={250}>
+  <section>
+    <div class="main-disc">
+      <div class="normal">
+        <h1>Our Maps</h1>
+        <p>
+          Currently, we are supporting nine unique clients with interactive 
+          resource maps that allow visitors to see what is offered near them 
+          and navigate often overwhelming systems.
+        </p>
+      </div>
+      <div class="card-container">
+        <Card 
+          image="/favicon.png"
+          title="The Philadelphia Alliance for Child Trauma Services (PACTS)" 
+          discription="PACTS is a network of child serving systems and organizations that provides evidence-based practices for traumatized youth and their families in the greater Philadelphia area."
+        />
+        <Card 
+          image="/favicon.png"
+          title="ClinWiki" 
+          discription="A 501(c)(3) focused on making clinical trials more transparent and approachable in order to drive participation and faster progress against serious diseases."
+        />
+        <Card 
+          image="/favicon.png"
+          title="Georgia DBHDD" 
+          discription="Organization description Organization
+          description Organization description Organization description Organization description Organization description"
+        />
+      </div>
+      <div class="buffer">&nbsp</div>
+    </div>		
+  </section>
 </Saos>
 <Saos
 animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
 animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
 top={250}
 bottom={250}>
-<section class="alternate">
-	<div class="main-disc">
-		<div class="normal">
-			<h1>About Bits of Good</h1>
-			<p>
-				The GT Bits of Good team connects students with local nonprofits by 
-				building powerful web apps in order to redefine social good.
-			</p>
-		</div>
-		<div class="card-container">
-			<Card 
-				image="/favicon.png"
-				title="Volunteer Management Solution" 
-				discription="Designing a general solution for nonprofits to accept volunteers, manage mass emails, and advertise new volunteering events."
-			/>
-			<Card 
-				image="/favicon.png"
-				title="Donation Marketplace Solution" 
-				discription="Designing a centralized web-platform for users to make donations and purchase nonprofit merchandise online."
-			/>
-			<Card 
-				image="/favicon.png"
-				title="Boys & Girls Club of Metro Atlanta - Safety" 
-				discription="Creating an improved, user-friendly bus attendance system for the Boys and Girls Club of Metro Atlanta."
-			/>
-		</div>
-	</div>		
-</section>
+  <section class="alternate">
+    <div class="main-disc">
+      <div class="normal">
+        <h1>About Bits of Good</h1>
+        <p>
+          The GT Bits of Good team connects students with local nonprofits by 
+          building powerful web apps in order to redefine social good.
+        </p>
+      </div>
+      <div class="card-container">
+        <Card 
+          image="/favicon.png"
+          title="Volunteer Management Solution" 
+          discription="Designing a general solution for nonprofits to accept volunteers, manage mass emails, and advertise new volunteering events."
+        />
+        <Card 
+          image="/favicon.png"
+          title="Donation Marketplace Solution" 
+          discription="Designing a centralized web-platform for users to make donations and purchase nonprofit merchandise online."
+        />
+        <Card 
+          image="/favicon.png"
+          title="Boys & Girls Club of Metro Atlanta - Safety" 
+          discription="Creating an improved, user-friendly bus attendance system for the Boys and Girls Club of Metro Atlanta."
+        />
+      </div>
+    </div>		
+  </section>
 </Saos>
