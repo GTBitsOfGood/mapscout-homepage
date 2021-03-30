@@ -3,10 +3,11 @@
 
 <style>
   section {
-    display: grid;
+    text-align: center;
     font-size: 18px;
     padding: 3rem;
     grid-template-columns: 1fr 1fr;
+    padding-top: 6rem;
     gap: 3rem 5rem;
     grid-template-areas:
       'heading heading'
@@ -14,46 +15,56 @@
       'image form'
       'address form';
   }
-  p {
-    font-size: inherit;
-    margin: 0;
-    margin-bottom: 2rem;
-    color: #333;
-  }
   h1 {
+    text-align: center;
     grid-area: 'heading';
-    margin-top: 3rem;
-    margin-bottom: 0;
-  }
-  .info-text {
-    grid-area: info-text;
-  }
-  img {
-    grid-area: image;
-    justify-self: center;
-    max-width: 450px;
+    font-family: 'Avenir';
+    font-weight: 700;
+    font-size: 2rem;
+    margin-top: 0rem;
+    margin-bottom: 1.4rem;
+    margin-left: -11.1rem;
   }
   form {
+    display: inline-block;
+    text-align: left;
     grid-area: form;
+    font-family: 'Avenir';
+    margin-right: 8.6rem;
   }
   label {
-    display: block;
-    margin-bottom: 1.5rem;
+    display: inline-block;
+    margin-bottom: .5rem;
+    font-family: 'Avenir';
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;    
   }
   input,
   textarea {
     display: block;
-    width: 100%;
-    margin-bottom: 4rem;
-    padding-bottom: 1rem;
+    width: 170%;
+    margin-bottom: 1rem;
   }
   textarea {
     resize: none;
-    min-height: 5em;
+    min-height: 5rem;
     transition: min-height 0.2s;
   }
   textarea:focus {
-    min-height: 10em;
+    min-height: 10rem;
+  }
+  button {
+    width: 170%;
+  }
+  fieldset {
+  display: inline;
+	border-radius:8px;
+	box-shadow:0 0 10px rgba(3,215,252,.2);
+  background-color: #ffffff;
+  padding: 2rem;
   }
 
   @media (max-width: 800px) {
@@ -70,16 +81,16 @@
 </style>
 
 <section>
-  <img class="placeholder" src="/favicon.png" alt="place_holder"/>
+  <fieldset>
   <h1>Contact Us</h1>
-  <p class="info-text">
-  This is placeholder text.
-  </p>
+  
   <form
     method="POST"
     name="contact"
     data-netlify="true"
     action="/contact-submitted">
+    
+    
     <input type="hidden" name="form-name" value="contact" />
     <label for="name">Name</label>
     <input
@@ -105,9 +116,11 @@
       placeholder="I had a question about..."
       required />
     <button type="submit" class="btn btn-primary">Message Us!</button>
+ 
     <!--Ignore this element. Included so the /contact-submitted page is generated when crawling the website.-->
     <a style="display: none" href="/contact-submitted">_</a>
   </form>
+</fieldset>
 </section>
 
 <svelte:head>
