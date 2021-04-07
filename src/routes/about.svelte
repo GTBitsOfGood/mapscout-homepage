@@ -5,7 +5,7 @@
 	var apiEndpoint = "https://mapscout.cdn.prismic.io/api/v2";
 	var apiToken = "MC5YMkVkUVJJQUFDY0FjU19f.Le-_vS3vv71q77-9BO-_ve-_ve-_ve-_vT3vv73vv70G77-9Ru-_ve-_vQTvv73vv71eX--_vXYKPe-_ve-_vRpN";
 	
-	let people = "default"
+	let people = null
   let banner= null
 	let titleOne = "My Name"
   let data = null
@@ -20,11 +20,11 @@
 			console.log(response.results)
 			people = response.results[1].data.about_entry //data for about page is stored in results[1] not [0]
 			console.log(people)
-			titleOne = people[0].person_name[0].text
-			titleTwo = people[0].person_description[0].text
-			titleThree = people[0].person_semester[0].text
-			image = people[0].person_image.url
-			alternate = people[0].person_image.alt
+			// titleOne = people[0].person_name[0].text
+			// titleTwo = people[0].person_description[0].text
+			// titleThree = people[0].person_semester[0].text
+			// image = people[0].person_image.url
+			// alternate = people[0].person_image.alt
 			// [i].person_image.url
 			// [i].person_image -> .url .alt .dimensions.width .dimensions.height
 		}, function(err) {
@@ -38,11 +38,11 @@
 			console.log(response.results)
 			banner = response.results[1].data.about_banner//data for about page is stored in results[1] not [0]
 			console.log(banner)
-			// titleOne = people[0].person_name[0].text
-			// titleTwo = people[0].person_description[0].text
-			// titleThree = people[0].person_semester[0].text
-			// image = people[0].person_image.url
-			// alternate = people[0].person_image.alt
+			titleOne = people[0].person_name[0].text
+			titleTwo = people[0].person_description[0].text
+			titleThree = people[0].person_semester[0].text
+			image = people[0].person_image.url
+			alternate = people[0].person_image.alt
 			// [i].person_image.url
 			// [i].person_image -> .url .alt .dimensions.width .dimensions.height
 		}, function(err) {
@@ -69,12 +69,16 @@
     padding: 0% 10%;
 	}
 	.image {
-		height: 277px;
-		width: 277px;
-		border-radius:8px;
+		background: #C4C4C4;
+    border-radius: 8px;
+    width: 277px;
+    height: 277px;
+
 	}
 	.card {
-		display: inline-block;
+		display: flex;
+		/* align-items: center; */
+		justify-content: space-between;
 		margin-left: 11rem; 
 		border: 0;
 	}
@@ -88,7 +92,6 @@
     font-weight: bold;
     font-size: 24px;
     line-height: 29px;
-		margin-left:-1rem;
 		margin-bottom: -0.02rem;
 	}
 	.people-title{
@@ -133,16 +136,17 @@
     font-size: 24px;
     line-height: 29px;
     color: #A6A6A6;
-    margin-left:-1rem;
+   
 	}
 	.member-container {
-    	width: 100%;
-    	display: grid;
-    	grid-template-columns: repeat(auto-fill, 340px);
-    	column-gap: 0px;
-    	row-gap: 20px;
-    	justify-content: start;
-    	align-items: stretch;		
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 277px);
+    column-gap: 16px;
+    row-gap: 16px;
+    justify-content: center;
+    padding: 0% 10%;
+    /* align-items: stretch; */
   }
 	.text-wrapper{
     display: inline-block; 
@@ -270,35 +274,20 @@
 	<h1 class="people-title"><span>The </span>Team</h1>
 </fieldset>
 {#if people}
-	<div class="member-container">
-		{#each people as person}
-			<section>
-        <Saos
-    animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-    animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-    top={250}
-    bottom={250}>
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="card">
-							<img class="image" src={image} alt={alternate}>
-							<div class="description">
-								<h2>{titleOne}</h2>
-								<!-- <h1>{people[0].person_description[0].text}</h1> -->
-
-								<p1>{titleTwo}</p1>
-								<!-- <h1>{people[0].person_description[1].text}</h1> -->
-
-								<p1>{titleThree}</p1>
-								<!-- <h1>{people[0].person_description[1].text}</h1> -->
-							</div>
-						</div>
-					</div>
-				</div>
-        </Saos>		
-			</section>
-		{/each}
-	</div>
+  <div class="member-container">
+	{#each people as item}	
+  <Saos
+  animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+  animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+  top={250}
+  bottom={250}>
+      <img class="image" src={item.person_image.url} alt={item.person_image.alt}>
+      <h2>{item.person_name[0].text}</h2>
+      <p1>{item.person_description[0].text}</p1>
+      <p1>{item.person_semester[0].text}</p1>
+  </Saos>		
+  {/each}
+</div>
 {:else}
 	<section>
 		<div>
