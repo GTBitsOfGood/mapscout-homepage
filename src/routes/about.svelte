@@ -285,6 +285,7 @@
       <img class="image" src={item.person_image.url} alt={item.person_image.alt}>
       <h2>{item.person_name[0].text}</h2>
       <p1>{item.person_description[0].text}</p1>
+      <br>
       <p1>{item.person_semester[0].text}</p1>
   </Saos>		
   {/each}
