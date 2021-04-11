@@ -51,6 +51,19 @@
 	})
 </script>
 <style>
+  section {
+		min-height: 100vh;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+    padding: 0% 10%;
+	}
+  div {
+		width: 30vw;
+	}
+
+ 
 	.row {
 		display: table-row;
 	}
@@ -60,14 +73,14 @@
 	.padding {
 		height: 16px;
 	}
-	.feature {
+	/* .feature {
     min-height: 100vh;
 		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
     padding: 0% 10%;
-	}
+	} */
 	.image {
 		background: #C4C4C4;
     border-radius: 8px;
@@ -106,7 +119,7 @@
 		color: #267dfa;
 	}
 	h1 {
-    left: 15.69%;
+     left: 15.69%;
     right: 48.12%;
     top: 5.7%;
     bottom: 92.47%;
@@ -152,7 +165,6 @@
 	.text-wrapper{
     display: inline-block; 
     white-space:pre-wrap;
-    width: 90%;
     /* word-wrap: normal; */
   }
 	.padding {
@@ -189,7 +201,7 @@
     bottom: 89.28%;
     background: #0A1D7C;
     border-radius: 11.2203px;
-    border-color: none;
+    border-color: #0A1D7C;
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
@@ -201,6 +213,92 @@
     object-fit: contain;
 		background: #C4C4C4;
 		filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));
+	}
+  .image1{
+    background: #C4C4C4;
+    border-radius: 8px;
+    object-fit: cover;
+    width: 593px;
+    height: 442px;
+  }
+
+  @media only screen and (max-width: 768px) {
+		h1 {
+      left: 10.13%;
+      right: -15.03%;
+      top: 54.12%;
+      bottom: 34.71%;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 33.4792px;
+      line-height: 40px;
+		}
+    
+		p {
+      left: 10.13%;
+      right: 5.7%;
+      top: 68.05%;
+      bottom: 21.99%;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16.7396px;
+      line-height: 20px;
+
+		}
+
+		section {
+      justify-content: center;
+			flex-direction: column-reverse;
+			align-items: space-between;
+      
+		}
+
+		div {
+			width: 90%;
+		}
+    .image1{
+      width: 80%;
+      height: 80%;
+    }
+      .image{
+      background: #C4C4C4;
+      border-radius: 8px;
+      object-fit: cover;
+      width: 277px;
+      height: 277px;
+      }
+		.placeholder {
+		  width: 100%;
+      margin-bottom: 20px;
+			background: #C4C4C4;
+		}
+
+		.alternate {
+			background-color: #fff;
+			color: #000;
+		}
+
+		.buffer {
+			display: block;
+			padding: 3vh;
+		}
+
+		.main-disc {
+			width: 90%;
+			padding-top: 2vh;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.card-container {
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.bg-image {
+			background: none;
+		}
 	}
   @keyframes -global-fade-in {
     0% {
@@ -256,7 +354,7 @@
     animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
     top={250}
     bottom={250}>
-      <section class= "feature" >
+      <section>
           <div class="text-wrapper">
             <h1>{item.banner_title[0].text}</h1>
             <p>{item.banner_description[0].text}</p>
@@ -264,9 +362,7 @@
             <button class="btn btn-primary">Learn More</button>
             {/if}
           </div>
-          <div class="">
-          <img class="placeholder" src={item.banner_image.url} alt={item.banner_image.alt}/>
-          </div>
+          <img  class="image1" src={item.banner_image.url} alt={item.banner_image.alt}/>
       </section>
     </Saos>
   {/each}
