@@ -2,6 +2,7 @@
   import Saos from "saos";
 	import { onMount } from 'svelte';
 	import Prismic  from 'prismic-javascript';
+  import VideoPlayer from 'svelte-video-player';
 	import Card from '../components/Card.svelte';
 
 	var apiEndpoint = "https://mapscout.cdn.prismic.io/api/v2";
@@ -21,6 +22,7 @@
 			console.log("Something went wrong: ", err);
 		});
 	})
+
 </script>
 
 <style>
@@ -276,9 +278,26 @@
             <button class="btn btn-primary">Get Started</button>
             {/if}
           </div>
+          {#if i == 0}
           <div class="image">
-          <img class="placeholder" src="/favicon.png" alt="place_holder"/>
+            <VideoPlayer color= "#0A1D7C" poster="./map1.png" source="./websiteIntegration.mov" loop />
           </div>
+          {/if}
+          {#if i == 1}
+          <div class="image">
+            <VideoPlayer  color= "#0A1D7C" poster="./templateBuilder.png" source="./createProvider.mov" loop />
+          </div>
+          {/if}
+          {#if i == 2}
+          <div class="image">
+            <VideoPlayer  color= "#0A1D7C" poster="./map2.png" source="./mapWalkthrough.mov" loop />
+          </div>
+          {/if}
+          {#if i == 3}
+          <div class="image">
+            <VideoPlayer  color= "#0A1D7C" poster="./mapInfo.png" source="./templateBuilder.mov" loop />
+          </div>
+          {/if}
       </section>
     </Saos>
     {/if}

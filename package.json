@@ -20,7 +20,8 @@
     "prismic-javascript": "^3.0.2",
     "purgecss": "^3.0.0",
     "sirv": "^1.0.0",
-    "svelte-preprocess": "^4.5.2"
+    "svelte-preprocess": "^4.5.2",
+    "svelte-video-player": "^1.2.5"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
