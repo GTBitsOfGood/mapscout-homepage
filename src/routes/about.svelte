@@ -71,6 +71,7 @@
 	.image {
 		background: #C4C4C4;
     border-radius: 8px;
+    object-fit: cover;
     width: 277px;
     height: 277px;
 
@@ -264,7 +265,7 @@
             {/if}
           </div>
           <div class="">
-          <img class="placeholder" src="/favicon.png" alt="place_holder"/>
+          <img class="placeholder" src={item.banner_image.url} alt={item.banner_image.alt}/>
           </div>
       </section>
     </Saos>
