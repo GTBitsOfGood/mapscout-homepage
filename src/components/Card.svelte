@@ -18,7 +18,7 @@
         width: 20vw;
         height: 30vh;
         border-radius: 10px;
-		background: #C4C4C4;
+	      background: #C4C4C4;
     }
 
     span {
