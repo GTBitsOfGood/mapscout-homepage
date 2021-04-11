@@ -7,12 +7,6 @@
 	
 	let people = null
   let banner= null
-	let titleOne = "My Name"
-  let data = null
-	let titleTwo = "My Role"
-	let titleThree = "My Semester"
-	let image = ""
-	let alternate = ""
 	onMount(async() => {
 		Prismic.getApi(apiEndpoint, {accessToken: apiToken}).then(function(api) {
 			return api.query(""); // An empty query will return all the documents
@@ -20,13 +14,6 @@
 			console.log(response.results)
 			people = response.results[1].data.about_entry //data for about page is stored in results[1] not [0]
 			console.log(people)
-			// titleOne = people[0].person_name[0].text
-			// titleTwo = people[0].person_description[0].text
-			// titleThree = people[0].person_semester[0].text
-			// image = people[0].person_image.url
-			// alternate = people[0].person_image.alt
-			// [i].person_image.url
-			// [i].person_image -> .url .alt .dimensions.width .dimensions.height
 		}, function(err) {
 		console.log("Something went wrong: ", err);
 		});
@@ -38,13 +25,6 @@
 			console.log(response.results)
 			banner = response.results[1].data.about_banner//data for about page is stored in results[1] not [0]
 			console.log(banner)
-			titleOne = people[0].person_name[0].text
-			titleTwo = people[0].person_description[0].text
-			titleThree = people[0].person_semester[0].text
-			image = people[0].person_image.url
-			alternate = people[0].person_image.alt
-			// [i].person_image.url
-			// [i].person_image -> .url .alt .dimensions.width .dimensions.height
 		}, function(err) {
 		console.log("Something went wrong: ", err);
 		});

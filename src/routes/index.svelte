@@ -9,6 +9,8 @@
 	var apiToken = "MC5YMkVkUVJJQUFDY0FjU19f.Le-_vS3vv71q77-9BO-_ve-_ve-_ve-_vT3vv73vv70G77-9Ru-_ve-_vQTvv73vv71eX--_vXYKPe-_ve-_vRpN";
 	
 	let data = null;
+  let cards = null;
+  let people = null;
 	let alternate = "alternate";
 
 	onMount(async() => {
@@ -22,7 +24,29 @@
 			console.log("Something went wrong: ", err);
 		});
 	})
+  onMount(async() => {
+		Prismic.getApi(apiEndpoint, {accessToken: apiToken}).then(function(api) {
+			return api.query(""); // An empty query will return all the documents
+		}).then(function(response) {
+			console.log(response.results)
+			cards = response.results[0].data.body//data for about page is stored in results[1] not [0]
+			console.log(cards)
+		}, function(err) {
+		console.log("Something went wrong: ", err);
+		});
+	})
 
+  onMount(async() => {
+		Prismic.getApi(apiEndpoint, {accessToken: apiToken}).then(function(api) {
+			return api.query(""); // An empty query will return all the documents
+		}).then(function(response) {
+			console.log(response.results)
+			people = response.results[1].data.about_entry //data for about page is stored in results[1] not [0]
+			console.log(people)
+		}, function(err) {
+		console.log("Something went wrong: ", err);
+		});
+	})
 </script>
 
 <style>
@@ -55,12 +79,13 @@
     text-align: center;
   }
   .image {
-
-    /* height: 100%; */
+    width: 50vw
+    
   }
   .text-wrapper{
     display: inline-block; 
     white-space:pre-wrap;
+    margin-right: 10%;
     /* word-wrap: normal; */
   }
 
@@ -80,9 +105,9 @@
 		justify-content: space-between;
 	} */
 
-	div {
+	/* div {
 		width: 30vw;
-	}
+	} */
 
 	h1 {
     left: 15.69%;
@@ -127,12 +152,12 @@
 	}
 
 	.main-disc {
-		width: 65%;
+		width: 100%;
 		min-height: 85vh;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
-		align-items: space-between;
+		justify-content: space-around;
+		align-items: space-around;
 	}
 
 	.buffer {
@@ -141,6 +166,7 @@
 
 	.card-container {
 		display: flex;
+    justify-content: center;
 	}
 
 	.normal {
@@ -261,201 +287,68 @@
 	<title>MapScout</title>
 </svelte:head>
 
-<div class="padding">&nbsp</div>
 {#if data}
 	{#each data as item, i}
-    {#if i<=3}
-    <Saos
-    animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-    animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-    top={250}
-    bottom={250}>
-      <section class= "{i%2 === 1 ? 'alternate' : ''}" >
-          <div class="text-wrapper">
-            <h1>{item.primary.title[0].text}</h1>
-            <p>{item.primary.description[0].text}</p>
-            {#if i == 0}
-            <button class="btn btn-primary">Get Started</button>
-            {/if}
-          </div>
-          {#if i == 0}
-          <div class="image">
-            <VideoPlayer color= "#0A1D7C" poster="./map1.png" source="./websiteIntegration.mov" loop />
-          </div>
-          {/if}
-          {#if i == 1}
-          <div class="image">
-            <VideoPlayer  color= "#0A1D7C" poster="./templateBuilder.png" source="./createProvider.mov" loop />
-          </div>
-          {/if}
-          {#if i == 2}
-          <div class="image">
-            <VideoPlayer  color= "#0A1D7C" poster="./map2.png" source="./mapWalkthrough.mov" loop />
-          </div>
-          {/if}
-          {#if i == 3}
-          <div class="image">
-            <VideoPlayer  color= "#0A1D7C" poster="./mapInfo.png" source="./templateBuilder.mov" loop />
-          </div>
-          {/if}
-      </section>
-    </Saos>
-    {/if}
-    {#if i>3}
+    {#if item.slice_type == "feature_section"}
       <Saos
       animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
       animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
       top={250}
       bottom={250}>
-        <section>
+        <section class= "{i%2 === 1 ? 'alternate' : ''}" >
+            <div class="text-wrapper">
+              <h1>{item.primary.title[0].text}</h1>
+              <p>{item.primary.description[0].text}</p>
+              {#if i == 0}
+              <button class="btn btn-primary">Get Started</button>
+              {/if}
+            </div>
+            {#if i == 0}
+            <div class="image">
+              <VideoPlayer color= "#0A1D7C" poster="./map1.png" source="./websiteIntegration.mov" loop />
+            </div>
+            {/if}
+            {#if i == 1}
+            <div class="image">
+              <VideoPlayer class="image"  color= "#0A1D7C" poster="./templateBuilder.png" source="./createProvider.mov" loop />
+            </div>
+            {/if}
+            {#if i == 2}
+            <div class="image">
+              <VideoPlayer  color= "#0A1D7C" poster="./map2.png" source="./mapWalkthrough.mov" loop />
+            </div>
+            {/if}
+            {#if i == 3}
+            <div class="image">
+              <VideoPlayer  color= "#0A1D7C" poster="./mapInfo.png" source="./templateBuilder.mov" loop />
+            </div>
+            {/if}
+        </section>
+      </Saos>
+    {:else if item.slice_type == "section_with_cards"}
+      <Saos
+      animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+      animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+      top={250}
+      bottom={250}>
+        <section> 
           <div class="main-disc">
             <div class="normal">
               <h1>{item.primary.title[0].text}</h1>
               <p> {item.primary.description[0].text}</p>
             </div>
-            <div class="card-container">
-              <Card 
-              image="/favicon.png"
-              title="The Philadelphia Alliance for Child Trauma Services (PACTS)" 
-              discription="PACTS is a network of child serving systems and organizations that provides evidence-based practices for traumatized youth and their families in the greater Philadelphia area."
-              />
-              <Card 
-                image="/favicon.png"
-                title="ClinWiki" 
-                discription="A 501(c)(3) focused on making clinical trials more transparent and approachable in order to drive participation and faster progress against serious diseases."
-              />
-              <Card 
-                image="/favicon.png"
-                title="Georgia DBHDD" 
-                discription="Organization description Organization
-                description Organization description Organization description Organization description Organization description"
-              />
+            <div class="card-container"> 
+              {#each item.items as card}
+                <Card 
+                image={card.card_image.url}
+                title={card.card_title ? card.card_title[0].text : ""}
+                discription={card.card_description ? card.card_description[0].text : ""}
+                />
+              {/each}
             </div>
-            <div class="buffer">&nbsp</div>
           </div>		
         </section>
-    </Saos>
+      </Saos> 
     {/if}
 	{/each}
 {/if}
-<!-- <section class="alternate">
-	<div class="wrapper">
-		<div>
-			<h1>Easily add, edit, and delete resources</h1>
-			<p>
-				Admins can smoothly manipulate anywhere from ten to ten thousand custom, presented data points.
-			</p>
-		</div>
-		<div class="buffer">&nbsp</div>
-		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
-	</div>
-</section>
-</Saos>
-<Saos
-animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-top={250}
-bottom={250}>
-<section>
-	<div class="wrapper reverse">
-		<div>
-			<h1>Create powerful <span class="alternate-text">search filters</span></h1>
-			<p>
-				Our unique template builder enables visitors to intuitively search with fully 
-				<span class="alternate-text">controlled</span>, customizable 
-				<span class="alternate-text">categories</span>.
-			</p>
-		</div>
-		<div class="buffer">&nbsp</div>
-		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
-	</div>
-</section>
-</Saos>
-<Saos
-animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-top={250}
-bottom={250}>
-<section class="alternate">
-	<div class="wrapper">
-		<div>
-			<h1>Integrate Mapscout with your website</h1>
-			<p>
-				Mapscout is both web and mobile friendly and can be effortlessly added to existing sites.
-			</p>
-		</div>
-		<div class="buffer">&nbsp</div>
-		<img class="placeholder" src="/favicon.png" alt="place_holder"/>
-</div>
-</section> -->
-<Saos
-animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-top={250}
-bottom={250}>
-  <section>
-    <div class="main-disc">
-      <div class="normal">
-        <h1>Our Maps</h1>
-        <p>
-          Currently, we are supporting nine unique clients with interactive 
-          resource maps that allow visitors to see what is offered near them 
-          and navigate often overwhelming systems.
-        </p>
-      </div>
-      <div class="card-container">
-        <Card 
-          image="/favicon.png"
-          title="The Philadelphia Alliance for Child Trauma Services (PACTS)" 
-          discription="PACTS is a network of child serving systems and organizations that provides evidence-based practices for traumatized youth and their families in the greater Philadelphia area."
-        />
-        <Card 
-          image="/favicon.png"
-          title="ClinWiki" 
-          discription="A 501(c)(3) focused on making clinical trials more transparent and approachable in order to drive participation and faster progress against serious diseases."
-        />
-        <Card 
-          image="/favicon.png"
-          title="Georgia DBHDD" 
-          discription="Organization description Organization
-          description Organization description Organization description Organization description Organization description"
-        />
-      </div>
-      <div class="buffer">&nbsp</div>
-    </div>		
-  </section>
-</Saos>
-<Saos
-animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-top={250}
-bottom={250}>
-  <section class="alternate">
-    <div class="main-disc">
-      <div class="normal">
-        <h1>About Bits of Good</h1>
-        <p>
-          The GT Bits of Good team connects students with local nonprofits by 
-          building powerful web apps in order to redefine social good.
-        </p>
-      </div>
-      <div class="card-container">
-        <Card 
-          image="/favicon.png"
-          title="Volunteer Management Solution" 
-          discription="Designing a general solution for nonprofits to accept volunteers, manage mass emails, and advertise new volunteering events."
-        />
-        <Card 
-          image="/favicon.png"
-          title="Donation Marketplace Solution" 
-          discription="Designing a centralized web-platform for users to make donations and purchase nonprofit merchandise online."
-        />
-        <Card 
-          image="/favicon.png"
-          title="Boys & Girls Club of Metro Atlanta - Safety" 
-          discription="Creating an improved, user-friendly bus attendance system for the Boys and Girls Club of Metro Atlanta."
-        />
-      </div>
-    </div>		
-  </section>
-</Saos>
