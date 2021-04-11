@@ -47,7 +47,7 @@
     bottom: 89.28%;
     background: #0A1D7C;
     border-radius: 11.2203px;
-    border-color: none;
+    border-color: #0A1D7C;
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
