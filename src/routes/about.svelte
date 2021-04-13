@@ -346,6 +346,7 @@
       opacity: 1;
     }
   }
+
 </style>
 
 <svelte:head>
