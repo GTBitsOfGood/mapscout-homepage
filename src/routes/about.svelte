@@ -1,17 +1,7 @@
 <script>
-	import Prismic from 'prismic-javascript'
-  import PrismicDOM from 'prismic-dom'
-  import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
+	import Prismic  from 'prismic-javascript';
   import Saos from "saos";
-
-  	async function getPage () {
-    return await Prismic.api('https://mapscout.cdn.prismic.io/api/v2')
-      .then((api) => {
-        return api.getByID('XqLu6REAACfAY6IC') // Put a real document ID here
-      })
-	}
-	  
-	
 	var apiEndpoint = "https://mapscout.cdn.prismic.io/api/v2";
 	var apiToken = "MC5YMkVkUVJJQUFDY0FjU19f.Le-_vS3vv71q77-9BO-_ve-_ve-_ve-_vT3vv73vv70G77-9Ru-_ve-_vQTvv73vv71eX--_vXYKPe-_ve-_vRpN";
 	
@@ -39,29 +29,8 @@
 		console.log("Something went wrong: ", err);
 		});
 	})
-
-	let y;
-
 </script>
 <style>
-	.container {
-    background-color: white;
-    height: 1000px;
-    width: 100%;
-  	}
-
-	.container-img {
-	position: absolute;
-	top: -200px;
-	left: 0;
-	width: 100%;
-	/* height: 100%; */
-	}
-
-	.cards {
-	background-color: transparent;
-	}
-
   section {
 		min-height: 100vh;
 		width: 100%;
@@ -74,6 +43,7 @@
 		width: 30vw;
 	}
 
+ 
 	.row {
 		display: table-row;
 	}
@@ -106,7 +76,11 @@
 		margin-left: 11rem; 
 		border: 0;
 	}
-
+	.description {
+		padding: 15px;
+		display: flex;
+		flex-direction: column;
+	}
 	h2 {
     font-style: normal;
     font-weight: bold;
@@ -167,12 +141,12 @@
     justify-content: center;
     padding: 0% 10%;
     /* align-items: stretch; */
-  	}
+  }
 	.text-wrapper{
     display: inline-block; 
     white-space:pre-wrap;
     /* word-wrap: normal; */
- 	}
+  }
 	.padding {
 		height: 16px;
 	}
@@ -346,99 +320,62 @@
       opacity: 1;
     }
   }
-
 </style>
 
 <svelte:head>
 	<title>About</title>
 </svelte:head>
-<svelte:window bind:scrollY={y} />
-
-{#await getPage()}
-<p>Loading...</p>
-
-{:then prismic}
-  {#each prismic.data.body as slice}
-    {#if slice.slice_type === 'text'}
-      {@html PrismicDOM.RichText.asHtml(slice.primary.text)}
-
-    {:else if slice.slice_type === 'image_link_grid'}
-      {#each slice.items as image}
-        <img src="{image.image.url}">
-      {/each}
-
-    <!-- Add more slice things here by checking the slice_type -->
-    {/if}
-  {/each}
-
-{:catch}
-<p>Error getting data</p>
-
-{/await}
 
 <div class="padding">&nbsp</div>
-<div class="container">
+{#if banner}
+	{#each banner as item,i}
+    <Saos
+    animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+    animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+    top={250}
+    bottom={250}>
+      <section>
+          <div class="text-wrapper">
+            <h1>{item.banner_title[0].text}</h1>
+            <p>{item.banner_description[0].text}</p>
+            {#if i == 1}
+            <button class="btn btn-primary">Learn More</button>
+            {/if}
+          </div>
+          <img  class="image1" src={item.banner_image.url} alt={item.banner_image.alt}/>
+      </section>
+    </Saos>
+  {/each}
+{/if}
+<fieldset>
+	<h1 class="people-title"><span>The </span>Team</h1>
+</fieldset>
+{#if people}
+  <div class="member-container">
+	{#each people as item}	
+  <Saos
+  animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+  animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+  top={250}
+  bottom={250}>
+      <img class="image" src={item.person_image.url} alt={item.person_image.alt}>
+      <h2>{item.person_name[0].text}</h2>
+      <p1>{item.person_description[0].text}</p1>
+      <br>
+      <p1>{item.person_semester[0].text}</p1>
+  </Saos>		
+  {/each}
+</div>
+{:else}
+	<section>
+		<div>
+			<h1>About this site</h1>
 
-	<img 
-		class="container-img" 
-		src={"/aboutpage-hero-1.png"}
-		alt="background"
-	>
-
-	<div class="cards" style="transform: translate(0, {y < 2 ? y * 1 : -y * 1/ (2 - 1)}px)"> <!--code to create parallax scrolling-->
-		{#if banner}
-			{#each banner as item,i}
-			<Saos
-			animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-			animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-			top={250}
-			bottom={250}>
-			<section class= "feature" >
-				<div class="text-wrapper">
-					<h1>{item.banner_title[0].text}</h1>
-					<p>{item.banner_description[0].text}</p>
-					{#if i == 1}
-					<button class="btn btn-primary">Learn More</button>
-					{/if}
-				</div>
-				<div class="">
-				<img class="placeholder" src="/favicon.png" alt="place_holder"/>
-				</div>
-			</section>
-			</Saos>
-		{/each}
-		{/if}
-		<fieldset>
-			<h1 class="people-title"><span>The </span>Team</h1>
-		</fieldset>
-		{#if people}
-		<div class="member-container">
-			{#each people as item}	
-		<Saos
-		animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-		animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-		top={250}
-		bottom={250}>
-			<img class="image" src={item.person_image.url} alt={item.person_image.alt}>
-			<h2>{item.person_name[0].text}</h2>
-			<p1>{item.person_description[0].text}</p1>
-			<p1>{item.person_semester[0].text}</p1>
-		</Saos>		
-		{/each}
+			<p>This is the 'about' page. There's not much here.</p>
 		</div>
-		{:else}
-			<section>
-				<div>
-					<h1>About this site</h1>
+	</section>
+{/if}
 
-					<p>This is the 'about' page. There's not much here.</p>
-				</div>
-			</section>
-		{/if}
-		</div>
-	</div>
-		
+	
 <!-- <p>{people[0].name}</p> -->
 <!-- <img src ={people[0].person_image.url} alt="jason_picture" /> -->
-
-
