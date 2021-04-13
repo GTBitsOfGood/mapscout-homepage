@@ -51,6 +51,7 @@
 	background-color: transparent;
   height: auto;
   width: auto;
+  width: 100%
 	}
 
   section {
@@ -350,7 +351,6 @@
 <svelte:window bind:scrollY={y} />
 
 <div class="padding">&nbsp</div>
-<div class="container">
 
 	<img 
 		class="container-img" 
@@ -358,7 +358,8 @@
 		alt="background"
 	>
 
-	<div class="cards" style="transform: translate(0, {y < 2 ? y * 1 : -y * 1/ (2 - 1)}px)"> <!--code to create parallax scrolling-->
+	<div class="cards" style="transform: translate(0, {y < 2 ? y * 1 : -y * 1/ (2 - 1)}px)"> 
+    <!-- code to create parallax scrolling -->
     {#if banner}
       {#each banner as item,i}
         <Saos
@@ -409,8 +410,6 @@
     {/if}
 
     </div>
-	</div>
-
 	
 <!-- <p>{people[0].name}</p> -->
 <!-- <img src ={people[0].person_image.url} alt="jason_picture" /> -->
