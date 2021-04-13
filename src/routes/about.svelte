@@ -1,6 +1,16 @@
 <script>
+	import Prismic from 'prismic-javascript'
+  	import PrismicDOM from 'prismic-dom'
+
+  	async function getPage () {
+    return await Prismic.api('https://mapscout.cdn.prismic.io/api/v2')
+      .then((api) => {
+        return api.getByID('XqLu6REAACfAY6IC') // Put a real document ID here
+      })
+	}
+	  
 	import { onMount } from 'svelte';
-	import Prismic  from 'prismic-javascript';
+	import Prismic from 'prismic-javascript';
   import Saos from "saos";
 	var apiEndpoint = "https://mapscout.cdn.prismic.io/api/v2";
 	var apiToken = "MC5YMkVkUVJJQUFDY0FjU19f.Le-_vS3vv71q77-9BO-_ve-_ve-_ve-_vT3vv73vv70G77-9Ru-_ve-_vQTvv73vv71eX--_vXYKPe-_ve-_vRpN";
@@ -265,6 +275,27 @@
 </svelte:head>
 <svelte:window bind:scrollY={y} />
 
+{#await getPage()}
+<p>Loading...</p>
+
+{:then prismic}
+  {#each prismic.data.body as slice}
+    {#if slice.slice_type === 'text'}
+      {@html PrismicDOM.RichText.asHtml(slice.primary.text)}
+
+    {:else if slice.slice_type === 'image_link_grid'}
+      {#each slice.items as image}
+        <img src="{image.image.url}">
+      {/each}
+
+    <!-- Add more slice things here by checking the slice_type -->
+    {/if}
+  {/each}
+
+{:catch}
+<p>Error getting data</p>
+
+{/await}
 
 <div class="padding">&nbsp</div>
 <div class="container">
