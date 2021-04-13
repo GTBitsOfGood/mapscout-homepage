@@ -17,12 +17,6 @@
 	
 	let people = null
   let banner= null
-	let titleOne = "My Name"
-  let data = null
-	let titleTwo = "My Role"
-	let titleThree = "My Semester"
-	let image = ""
-	let alternate = ""
 	onMount(async() => {
 		Prismic.getApi(apiEndpoint, {accessToken: apiToken}).then(function(api) {
 			return api.query(""); // An empty query will return all the documents
@@ -30,13 +24,6 @@
 			console.log(response.results)
 			people = response.results[1].data.about_entry //data for about page is stored in results[1] not [0]
 			console.log(people)
-			// titleOne = people[0].person_name[0].text
-			// titleTwo = people[0].person_description[0].text
-			// titleThree = people[0].person_semester[0].text
-			// image = people[0].person_image.url
-			// alternate = people[0].person_image.alt
-			// [i].person_image.url
-			// [i].person_image -> .url .alt .dimensions.width .dimensions.height
 		}, function(err) {
 		console.log("Something went wrong: ", err);
 		});
@@ -48,13 +35,6 @@
 			console.log(response.results)
 			banner = response.results[1].data.about_banner//data for about page is stored in results[1] not [0]
 			console.log(banner)
-			titleOne = people[0].person_name[0].text
-			titleTwo = people[0].person_description[0].text
-			titleThree = people[0].person_semester[0].text
-			image = people[0].person_image.url
-			alternate = people[0].person_image.alt
-			// [i].person_image.url
-			// [i].person_image -> .url .alt .dimensions.width .dimensions.height
 		}, function(err) {
 		console.log("Something went wrong: ", err);
 		});
@@ -72,7 +52,7 @@
 
 	.container-img {
 	position: absolute;
-	top: 80px;
+	top: -200px;
 	left: 0;
 	width: 100%;
 	/* height: 100%; */
@@ -80,6 +60,18 @@
 
 	.cards {
 	background-color: transparent;
+	}
+
+  section {
+		min-height: 100vh;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+    padding: 0% 10%;
+	}
+  div {
+		width: 30vw;
 	}
 
 	.row {
@@ -91,17 +83,18 @@
 	.padding {
 		height: 16px;
 	}
-	.feature {
+	/* .feature {
     min-height: 100vh;
 		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
     padding: 0% 10%;
-	}
+	} */
 	.image {
 		background: #C4C4C4;
     border-radius: 8px;
+    object-fit: cover;
     width: 277px;
     height: 277px;
 
@@ -132,7 +125,7 @@
 		color: #267dfa;
 	}
 	h1 {
-    left: 15.69%;
+     left: 15.69%;
     right: 48.12%;
     top: 5.7%;
     bottom: 92.47%;
@@ -178,7 +171,6 @@
 	.text-wrapper{
     display: inline-block; 
     white-space:pre-wrap;
-    width: 90%;
     /* word-wrap: normal; */
  	}
 	.padding {
@@ -215,7 +207,7 @@
     bottom: 89.28%;
     background: #0A1D7C;
     border-radius: 11.2203px;
-    border-color: none;
+    border-color: #0A1D7C;
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
@@ -227,6 +219,92 @@
     object-fit: contain;
 		background: #C4C4C4;
 		filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));
+	}
+  .image1{
+    background: #C4C4C4;
+    border-radius: 8px;
+    object-fit: cover;
+    width: 593px;
+    height: 442px;
+  }
+
+  @media only screen and (max-width: 768px) {
+		h1 {
+      left: 10.13%;
+      right: -15.03%;
+      top: 54.12%;
+      bottom: 34.71%;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 33.4792px;
+      line-height: 40px;
+		}
+    
+		p {
+      left: 10.13%;
+      right: 5.7%;
+      top: 68.05%;
+      bottom: 21.99%;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16.7396px;
+      line-height: 20px;
+
+		}
+
+		section {
+      justify-content: center;
+			flex-direction: column-reverse;
+			align-items: space-between;
+      
+		}
+
+		div {
+			width: 90%;
+		}
+    .image1{
+      width: 80%;
+      height: 80%;
+    }
+      .image{
+      background: #C4C4C4;
+      border-radius: 8px;
+      object-fit: cover;
+      width: 277px;
+      height: 277px;
+      }
+		.placeholder {
+		  width: 100%;
+      margin-bottom: 20px;
+			background: #C4C4C4;
+		}
+
+		.alternate {
+			background-color: #fff;
+			color: #000;
+		}
+
+		.buffer {
+			display: block;
+			padding: 3vh;
+		}
+
+		.main-disc {
+			width: 90%;
+			padding-top: 2vh;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.card-container {
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.bg-image {
+			background: none;
+		}
 	}
   @keyframes -global-fade-in {
     0% {
@@ -302,7 +380,7 @@
 
 	<img 
 		class="container-img" 
-		src={"/homepage-hero-1.png"} 
+		src={"/aboutpage-hero-1.png"}
 		alt="background"
 	>
 
