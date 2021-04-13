@@ -3,6 +3,7 @@
   import PrismicDOM from 'prismic-dom'
   import { onMount } from 'svelte';
   import Saos from "saos";
+
   	async function getPage () {
     return await Prismic.api('https://mapscout.cdn.prismic.io/api/v2')
       .then((api) => {
