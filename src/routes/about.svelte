@@ -1,7 +1,8 @@
 <script>
 	import Prismic from 'prismic-javascript'
-  	import PrismicDOM from 'prismic-dom'
-
+  import PrismicDOM from 'prismic-dom'
+  import { onMount } from 'svelte';
+  import Saos from "saos";
   	async function getPage () {
     return await Prismic.api('https://mapscout.cdn.prismic.io/api/v2')
       .then((api) => {
@@ -9,9 +10,7 @@
       })
 	}
 	  
-	import { onMount } from 'svelte';
-	import Prismic from 'prismic-javascript';
-  import Saos from "saos";
+	
 	var apiEndpoint = "https://mapscout.cdn.prismic.io/api/v2";
 	var apiToken = "MC5YMkVkUVJJQUFDY0FjU19f.Le-_vS3vv71q77-9BO-_ve-_ve-_ve-_vT3vv73vv70G77-9Ru-_ve-_vQTvv73vv71eX--_vXYKPe-_ve-_vRpN";
 	
