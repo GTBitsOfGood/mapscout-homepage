@@ -62,7 +62,7 @@
 
 	.container-img {
 	position: absolute;
-	top: 80px;
+	top: -200px;
 	left: 0;
 	width: 100%;
 	/* height: 100%; */
@@ -271,7 +271,7 @@
 
 	<img 
 		class="container-img" 
-		src={"/homepage-hero-1.png"} 
+		src={"/aboutpage-hero-1.png"}
 		alt="background"
 	>
 
