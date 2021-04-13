@@ -29,8 +29,30 @@
 		console.log("Something went wrong: ", err);
 		});
 	})
+
+  let y;
+
 </script>
 <style>
+
+  .container {
+    background-color: white;
+    height: 1000px;
+    width: 100%;
+  	}
+	.container-img {
+	position: absolute;
+	top: -200px;
+	left: 0;
+	width: 100%;
+	/* height: 100%; */
+	}
+	.cards {
+	background-color: transparent;
+  height: auto;
+  width: auto;
+	}
+
   section {
 		min-height: 100vh;
 		width: 100%;
@@ -325,56 +347,69 @@
 <svelte:head>
 	<title>About</title>
 </svelte:head>
+<svelte:window bind:scrollY={y} />
 
 <div class="padding">&nbsp</div>
-{#if banner}
-	{#each banner as item,i}
-    <Saos
-    animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-    animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-    top={250}
-    bottom={250}>
-      <section>
-          <div class="text-wrapper">
-            <h1>{item.banner_title[0].text}</h1>
-            <p>{item.banner_description[0].text}</p>
-            {#if i == 1}
-            <button class="btn btn-primary">Learn More</button>
-            {/if}
-          </div>
-          <img  class="image1" src={item.banner_image.url} alt={item.banner_image.alt}/>
-      </section>
-    </Saos>
-  {/each}
-{/if}
-<fieldset>
-	<h1 class="people-title"><span>The </span>Team</h1>
-</fieldset>
-{#if people}
-  <div class="member-container">
-	{#each people as item}	
-  <Saos
-  animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
-  animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
-  top={250}
-  bottom={250}>
-      <img class="image" src={item.person_image.url} alt={item.person_image.alt}>
-      <h2>{item.person_name[0].text}</h2>
-      <p1>{item.person_description[0].text}</p1>
-      <br>
-      <p1>{item.person_semester[0].text}</p1>
-  </Saos>		
-  {/each}
-</div>
-{:else}
-	<section>
-		<div>
-			<h1>About this site</h1>
+<div class="container">
 
-			<p>This is the 'about' page. There's not much here.</p>
-		</div>
-	</section>
-{/if}
+	<img 
+		class="container-img" 
+		src={"/aboutpage-hero-1.png"}
+		alt="background"
+	>
+
+	<div class="cards" style="transform: translate(0, {y < 2 ? y * 1 : -y * 1/ (2 - 1)}px)"> <!--code to create parallax scrolling-->
+    {#if banner}
+      {#each banner as item,i}
+        <Saos
+        animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+        animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+        top={250}
+        bottom={250}>
+          <section>
+              <div class="text-wrapper">
+                <h1>{item.banner_title[0].text}</h1>
+                <p>{item.banner_description[0].text}</p>
+                {#if i == 1}
+                <button class="btn btn-primary">Learn More</button>
+                {/if}
+              </div>
+              <img  class="image1" src={item.banner_image.url} alt={item.banner_image.alt}/>
+          </section>
+        </Saos>
+      {/each}
+    {/if}
+    <fieldset>
+      <h1 class="people-title"><span>The </span>Team</h1>
+    </fieldset>
+    {#if people}
+      <div class="member-container">
+      {#each people as item}	
+      <Saos
+      animation={'fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both'}
+      animation_out={'slide-out-fwd-center 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both'}
+      top={250}
+      bottom={250}>
+          <img class="image" src={item.person_image.url} alt={item.person_image.alt}>
+          <h2>{item.person_name[0].text}</h2>
+          <p1>{item.person_description[0].text}</p1>
+          <br>
+          <p1>{item.person_semester[0].text}</p1>
+      </Saos>		
+      {/each}
+    </div>
+    {:else}
+      <section>
+        <div>
+          <h1>About this site</h1>
+
+          <p>This is the 'about' page. There's not much here.</p>
+        </div>
+      </section>
+    {/if}
+
+    </div>
+	</div>
 
 	
 <!-- <p>{people[0].name}</p> -->
