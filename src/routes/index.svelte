@@ -4,7 +4,6 @@
 	import Prismic  from 'prismic-javascript';
   import VideoPlayer from 'svelte-video-player';
 	import Card from '../components/Card.svelte';
-
 	var apiEndpoint = "https://mapscout.cdn.prismic.io/api/v2";
 	var apiToken = "MC5YMkVkUVJJQUFDY0FjU19f.Le-_vS3vv71q77-9BO-_ve-_ve-_ve-_vT3vv73vv70G77-9Ru-_ve-_vQTvv73vv71eX--_vXYKPe-_ve-_vRpN";
 	
@@ -305,22 +304,28 @@
             </div>
             {#if i == 0}
             <div class="image">
-              <VideoPlayer color= "#0A1D7C" poster="./map1.png" source="./websiteIntegration.mov" loop />
+              <!-- attempt at Vime player to allow for autoplay
+              <vm-player playsinline>
+                <vm-default-ui>
+                </vm-default-ui>
+              </vm-player>
+              -->
+              <VideoPlayer color= "#0A1D7C" poster="./map1.png" centerIconSize="30px" source="./websiteIntegration.mov" loop autoplay/>
             </div>
             {/if}
             {#if i == 1}
             <div class="image">
-              <VideoPlayer class="image"  color= "#0A1D7C" poster="./templateBuilder.png" source="./createProvider.mov" loop />
+              <VideoPlayer color= "#0A1D7C" centerIconSize="30px" poster="./templateBuilder.png" source="./createProvider.mov" loop autoplay/>
             </div>
             {/if}
             {#if i == 2}
             <div class="image">
-              <VideoPlayer  color= "#0A1D7C" poster="./map2.png" source="./mapWalkthrough.mov" loop />
+              <VideoPlayer  color= "#0A1D7C" poster="./map2.png" centerIconSize="30px" source="./mapWalkthrough.mov" loop autoplay/>
             </div>
             {/if}
             {#if i == 3}
             <div class="image">
-              <VideoPlayer  color= "#0A1D7C" poster="./mapInfo.png" source="./templateBuilder.mov" loop />
+              <VideoPlayer  color= "#0A1D7C" poster="./mapInfo.png" centerIconSize="30px" source="./templateBuilder.mov" loop autoplay/>
             </div>
             {/if}
         </section>
