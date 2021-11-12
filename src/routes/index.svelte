@@ -310,22 +310,43 @@
                 </vm-default-ui>
               </vm-player>
               -->
-              <VideoPlayer color= "#0A1D7C" poster="./map1.png" centerIconSize="30px" source="./websiteIntegration.mov" loop autoplay/>
+              <!--<VideoPlayer color= "#0A1D7C" poster="./map1.png" centerIconSize="30px" source="./websiteIntegration.mov" loop autoplay/>-->
+              <video controls width="500" height="500"
+                autoplay loop muted preload="auto"
+                poster="./map1.png">
+                <source src ="./websiteIntegration.mov"  type="video/mp4">
+                <p>Video unable to load</p>
+              </video>
             </div>
             {/if}
             {#if i == 1}
             <div class="image">
-              <VideoPlayer color= "#0A1D7C" centerIconSize="30px" poster="./templateBuilder.png" source="./createProvider.mov" loop autoplay/>
+              <video controls width="500" height="500"
+                autoplay loop muted preload="auto"
+                poster="./templateBuilder.png">
+                <source src = "./createProvider.mov"  type="video/mp4">
+                <p>Video unable to load</p>
+              </video>
             </div>
             {/if}
             {#if i == 2}
             <div class="image">
-              <VideoPlayer  color= "#0A1D7C" poster="./map2.png" centerIconSize="30px" source="./mapWalkthrough.mov" loop autoplay/>
+              <video controls width="500" height="500"
+                autoplay loop muted preload="auto"
+                poster="./map2.png" >
+                <source src = "./mapWalkthrough.mov"  type="video/mp4">
+                  <p>Video unable to load</p>
+              </video>
             </div>
             {/if}
             {#if i == 3}
             <div class="image">
-              <VideoPlayer  color= "#0A1D7C" poster="./mapInfo.png" centerIconSize="30px" source="./templateBuilder.mov" loop autoplay/>
+              <video controls width="500" height="500"
+                autoplay loop muted preload="auto"
+                poster="./mapInfo.png">
+                <source src = "./templateBuilder.mov"  type="video/mp4">
+                  <p>Video unable to load</p>
+              </video>
             </div>
             {/if}
         </section>
