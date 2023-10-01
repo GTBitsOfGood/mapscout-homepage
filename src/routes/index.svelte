@@ -124,8 +124,8 @@
 	}
 
 	.alternate {
-		background-color: #0A1D7C;
-		color: #fff;
+		background-color: #fff;
+		color: #000;
 	}
 
 	.reverse {
