@@ -950,6 +950,11 @@
   dependencies:
     "@types/node" "*"
 
+"@vime/svelte@^5.0.35":
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/@vime/svelte/-/svelte-5.4.1.tgz#f2252f6ad7298d1372d7bd147f1dcda409476877"
+  integrity sha512-I0wnPpfkGIsx8149z32nAVBZ2YTjLTLrpnTFNs+6yV07ynvgEDvfTQEa3F6cx4XDerDROBk3nkpB6W6dtdt52Q==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -2830,6 +2835,11 @@ svelte-preprocess@^4.5.2:
     "@types/sass" "^1.16.0"
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
+
+svelte-video-player@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/svelte-video-player/-/svelte-video-player-1.2.5.tgz#f7f7f9c86fa637011c22f3a97737c4b438294a20"
+  integrity sha512-iImQY6qnEEE0fngq9aANKMKDD2knTBcsyTLKHc3hyZ/nj/ZExwBAJ7MbxlOnyLpSKzZA1KaSSaqKXeTRWZOOlw==
 
 svelte@^3.17.3:
   version "3.29.4"
