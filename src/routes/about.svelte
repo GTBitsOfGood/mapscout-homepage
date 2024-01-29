@@ -211,6 +211,10 @@
     line-height: 24px;
     text-align: center;
   }
+  .learn-more{
+    text-decoration: none;
+    width: fit-content;
+  }
   .placeholder {
     width: 100%;
     object-fit: contain;
@@ -372,7 +376,7 @@
                 <h1>{item.banner_title[0].text}</h1>
                 <p>{item.banner_description[0].text}</p>
                 {#if i == 1}
-                <button class="btn btn-primary">Learn More</button>
+                <a class="btn btn-primary learn-more" href="https://bitsofgood.org/">Learn More</a>
                 {/if}
               </div>
               <img  class="image1" src={item.banner_image.url} alt={item.banner_image.alt}/>
