@@ -299,7 +299,7 @@
               <h1>{item.primary.title[0].text}</h1>
               <p>{item.primary.description[0].text}</p>
               {#if i == 0}
-              <button class="btn btn-primary">Get Started</button>
+              <a href="https://mapscout.io/" class="btn btn-primary">Get Started</a>
               {/if}
             </div>
             {#if i == 0}
