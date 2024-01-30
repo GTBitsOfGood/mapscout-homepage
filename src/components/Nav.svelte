@@ -28,9 +28,7 @@
 	//open a new tab and navigate to webpage on same tab
 	const openNewTabAndNavigate = () => {
     	window.open("https://bitsofgood.org/contact/", '_blank');
-    
-    // window.location.href = 'https://weather.com';
-  };
+  	};
   
 	// Attach media query listener on mount hook
 	onMount(() => {
