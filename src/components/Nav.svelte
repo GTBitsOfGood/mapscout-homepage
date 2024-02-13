@@ -10,7 +10,7 @@
 	  { label: "About", href: "about" },
 	  { label: "Sign Up", href: "https://mapscout.io/" },
 	  { label: "Log In", href: "#" },
-	//   { label: "Contact Us", href: "contact" },
+	//   { label: "Contact Us", href: "https://bitsofgood.org/contact/" },
 	];
   
 	// Mobile menu click event handler
@@ -27,10 +27,8 @@
 
 	//open a new tab and navigate to webpage on same tab
 	const openNewTabAndNavigate = () => {
-    window.open('https://www.example.com', '_blank');
-    
-    // window.location.href = 'https://weather.com';
-  };
+    	window.open("https://bitsofgood.org/contact/", '_blank');
+  	};
   
 	// Attach media query listener on mount hook
 	onMount(() => {
