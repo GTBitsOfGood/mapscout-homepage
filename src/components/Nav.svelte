@@ -8,8 +8,8 @@
 	// List of navigation items
 	const navItems = [
 	  { label: "About", href: "about" },
-	  { label: "Sign Up", href: "https://mapscout.io/" },
-	  { label: "Log In", href: "https://mapscout.io/auth" },
+	  { label: "Sign Up", href: "https://app.mapscout.io/" },
+	  { label: "Log In", href: "https://app.mapscout.io/auth" },
 	//   { label: "Contact Us", href: "https://bitsofgood.org/contact/" },
 	];
   
