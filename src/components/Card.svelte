@@ -1,6 +1,7 @@
 <script>
     export let title;
-    export let discription;
+    export let description;
+    export let link;
     export let image;
 </script>
 
@@ -46,8 +47,10 @@
     }
 </style>
 
-<div>
-    <img src={image} alt={title+"_image"}/>
-    <span>{title}</span>
-    <p>{discription}</p>
-</div>
+<a href={link}> 
+    <div>
+        <img src={image} alt={title+"_image"}/>
+        <span>{title}</span>
+        <p>{description}</p>
+    </div>
+</a>

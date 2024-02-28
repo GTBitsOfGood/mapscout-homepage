@@ -368,8 +368,9 @@
                 <Card 
                 image={card.card_image.url}
                 title={card.card_title ? card.card_title[0].text : ""}
-                discription={card.card_description ? card.card_description[0].text : ""}
-                />
+                description={card.card_description ? card.card_description[0].text : ""}
+                link={card.link}
+            />
               {/each}
             </div>
           </div>		
