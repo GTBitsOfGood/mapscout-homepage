@@ -42,7 +42,7 @@
   	}
 	.container-img {
 	position: absolute;
-	top: -200px;
+	top: -1000px;
 	left: 0;
 	width: 100%;
 	/* height: 100%; */
@@ -162,7 +162,7 @@
     column-gap: 16px;
     row-gap: 16px;
     justify-content: center;
-    padding: 0% 10%;
+    padding: 0% 10% 10%;
     /* align-items: stretch; */
   }
 	.text-wrapper{
@@ -362,7 +362,6 @@
 		alt="background"
 	>
 
-	<div class="cards" style="transform: translate(0, {y < 2 ? y * 1 : -y * 1/ (2 - 1)}px)"> 
     <!-- code to create parallax scrolling -->
     {#if banner}
       {#each banner as item,i}
@@ -413,7 +412,6 @@
       </section>
     {/if}
 
-    </div>
 	
 <!-- <p>{people[0].name}</p> -->
 <!-- <img src ={people[0].person_image.url} alt="jason_picture" /> -->
