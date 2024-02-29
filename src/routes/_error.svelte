@@ -2,6 +2,10 @@
 	export let status;
 	export let error;
 
+	export const load = ({ url }) => {
+	  throw redirect(301, "https://app.mapscout.io" + url.pathname);
+	};
+
 	const dev = process.env.NODE_ENV === 'development';
 </script>
 
