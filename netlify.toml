@@ -1,6 +1,0 @@
-[[redirects]]
-  from = "/*"
-  to = "https://app.mapscout.io/:splat"
-  status = 200
-  force = true
-  query = {path = ":path"} #  apply this rule for /old-path?path=example
